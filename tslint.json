@@ -1,8 +1,9 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
-  "rulesDirectory": ["tslint-plugin-prettier"],
-  "rules": {
-    "prettier": true,
-    "interface-name": false
-  }
+    "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+    "rulesDirectory": ["tslint-plugin-prettier"],
+    "rules": {
+        "prettier": true,
+        "no-console": false,
+        "interface-name": false
+    }
 }
