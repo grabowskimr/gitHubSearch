@@ -4,6 +4,7 @@
     "rules": {
         "prettier": true,
         "no-console": false,
-        "interface-name": false
+        "interface-name": false,
+        "no-empty": false
     }
 }
