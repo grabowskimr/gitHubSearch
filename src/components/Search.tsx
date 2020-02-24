@@ -3,7 +3,7 @@ import React, { useState, useEffect, ChangeEvent, useContext } from 'react';
 import SearchInput from '../containers/SearchInput';
 import { searchForUser } from '../actions/apiCalls';
 import { AppContext } from '../appContext';
-import { showError } from '../actions/actions';
+import { showError, setUsers, clearUsers } from '../actions/actions';
 
 const Search: React.FC = (): JSX.Element => {
     const [searchInput, setSearchInput] = useState<string>('');
@@ -13,15 +13,17 @@ const Search: React.FC = (): JSX.Element => {
 
     const handeSearch = (e: ChangeEvent<HTMLInputElement>): void => {
         setSearchInput(e.target.value);
+        dispatch(clearUsers());
         clearTimeout(searchTimeout);
     };
 
     useEffect(() => {
         const fetchData = async () => {
             const data = await searchForUser(searchInput);
-            console.log(data);
             if ('message' in data) {
                 dispatch(showError(data.message));
+            } else {
+                dispatch(setUsers(data));
             }
         };
 

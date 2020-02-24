@@ -3,12 +3,12 @@ import ACTIONS from './constants/actions';
 
 export const initialState: State = {
     error: '',
+    users: [],
 };
 
 export const reducer = (state: State = initialState, action: Action) => {
     switch (action.type) {
         case ACTIONS.SHOW_ERROR:
-            console.log(action.payload.error);
             return {
                 ...state,
                 error: action.payload.error ? action.payload.error : '',
@@ -17,6 +17,16 @@ export const reducer = (state: State = initialState, action: Action) => {
             return {
                 ...state,
                 error: '',
+            };
+        case ACTIONS.SET_USERS:
+            return {
+                ...state,
+                users: action.payload.users && action.payload.users.length ? action.payload.users : [],
+            };
+        case ACTIONS.CLEAR_USERS:
+            return {
+                ...state,
+                users: [],
             };
         default:
             throw new Error();

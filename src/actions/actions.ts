@@ -15,3 +15,19 @@ export const hideError = (): Action => {
         payload: {},
     };
 };
+
+export const setUsers = (users: User[]): Action => {
+    return {
+        type: ACTIONS.SET_USERS,
+        payload: {
+            users,
+        },
+    };
+};
+
+export const clearUsers = (): Action => {
+    return {
+        type: ACTIONS.CLEAR_USERS,
+        payload: {},
+    };
+};
