@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { apiUrl } from '../constants/config';
 
-export const searchForUser = async (query: string): Promise<User[]> => {
+export const searchForUser = async (query: string): Promise<User[] | RequestError> => {
     try {
         const { data }: Response<UsersResponse> = await axios.get(`${apiUrl}/search/users`, {
             params: {
@@ -12,6 +12,8 @@ export const searchForUser = async (query: string): Promise<User[]> => {
 
         return data.items;
     } catch (e) {
-        return e;
+        return {
+            message: e.message,
+        };
     }
 };

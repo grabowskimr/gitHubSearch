@@ -31,3 +31,7 @@ interface User {
     site_admin: boolean;
     score: number;
 }
+
+interface RequestError {
+    message: string;
+}

@@ -1,12 +1,15 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent, useContext } from 'react';
 
 import SearchInput from '../containers/SearchInput';
 import { searchForUser } from '../actions/apiCalls';
+import { AppContext } from '../appContext';
+import { showError } from '../actions/actions';
 
 const Search: React.FC = (): JSX.Element => {
     const [searchInput, setSearchInput] = useState<string>('');
     const [searchTimeout, setSearchTimeout] = useState();
     const minValueLength = 3;
+    const { dispatch } = useContext(AppContext);
 
     const handeSearch = (e: ChangeEvent<HTMLInputElement>): void => {
         setSearchInput(e.target.value);
@@ -17,6 +20,9 @@ const Search: React.FC = (): JSX.Element => {
         const fetchData = async () => {
             const data = await searchForUser(searchInput);
             console.log(data);
+            if ('message' in data) {
+                dispatch(showError(data.message));
+            }
         };
 
         if (searchInput.length < minValueLength) {

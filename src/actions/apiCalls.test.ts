@@ -23,9 +23,11 @@ describe('getFeaturedPlaylist', () => {
             );
         });
 
-        const users = await searchForUser('test');
+        const data = await searchForUser('test');
 
-        expect(users).toEqual([user]);
-        expect(users[0].login).toBe('test');
+        if ('length' in data) {
+            expect(data).toEqual([user]);
+            expect(data[0].login).toBe('test');
+        }
     });
 });
