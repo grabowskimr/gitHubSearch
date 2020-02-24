@@ -7,7 +7,7 @@ type Props = {
 
 const SearchInput = (props: Props): JSX.Element => (
     <div className="search-input">
-        <input type="text" placeholder="Search" value={props.value} onChange={props.onChange} />
+        <input type="text" placeholder="Search" className="text-input" value={props.value} onChange={props.onChange} />
     </div>
 );
 
