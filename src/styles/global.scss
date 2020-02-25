@@ -3,3 +3,12 @@ body {
     font-family: sans-serif;
     font-size: $globalFontSize;
 }
+.bold-text {
+    font-weight: 700;
+}
+.app-title {
+    text-align: center;
+    margin: 2rem 0px 0px;
+    font-weight: 300;
+    font-size: 3rem;
+}
