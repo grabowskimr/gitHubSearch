@@ -17,3 +17,14 @@ export const searchForUser = async (query: string): Promise<User[] | RequestErro
         };
     }
 };
+
+export const getUserRepos = async (url: string): Promise<Repo[] | RequestError> => {
+    try {
+        const { data }: Response<Repo[]> = await axios.get(url);
+        return data;
+    } catch (e) {
+        return {
+            message: e.message,
+        };
+    }
+};

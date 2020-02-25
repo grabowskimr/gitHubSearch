@@ -1,13 +1,12 @@
 import React from 'react';
 
-import UserRepos from '../containers/UserRepos';
+import UserRepos from './UserRepos';
 
 type Props = {
     user: User;
 };
 
 const User = (props: Props): JSX.Element => {
-    console.log(props.user);
     return (
         <div className="user">
             <div className="user-img">
@@ -16,7 +15,7 @@ const User = (props: Props): JSX.Element => {
             <div className="user-details">
                 <h3 className="user-login">{props.user.login}</h3>
                 <h4 className="user-id">{props.user.id}</h4>
-                <UserRepos user={props.user} />
+                <UserRepos reposUrl={props.user.repos_url} instant={false} />
             </div>
         </div>
     );
