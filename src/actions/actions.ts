@@ -31,3 +31,17 @@ export const clearUsers = (): Action => {
         payload: {},
     };
 };
+
+export const setSearching = (): Action => {
+    return {
+        type: ACTIONS.SET_SEARCHING,
+        payload: {},
+    };
+};
+
+export const unsetSearching = (): Action => {
+    return {
+        type: ACTIONS.UNSET_SEARCHING,
+        payload: {},
+    };
+};

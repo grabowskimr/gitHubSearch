@@ -4,6 +4,7 @@ import ACTIONS from './constants/actions';
 export const initialState: State = {
     error: '',
     users: [],
+    searching: false,
 };
 
 export const reducer = (state: State = initialState, action: Action) => {
@@ -27,6 +28,16 @@ export const reducer = (state: State = initialState, action: Action) => {
             return {
                 ...state,
                 users: [],
+            };
+        case ACTIONS.SET_SEARCHING:
+            return {
+                ...state,
+                searching: true,
+            };
+        case ACTIONS.UNSET_SEARCHING:
+            return {
+                ...state,
+                searching: false,
             };
         default:
             throw new Error();

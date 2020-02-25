@@ -12,6 +12,7 @@ type Props = {
 
 const UserRepos = (props: Props): JSX.Element => {
     const [repos, setRepos] = useState<Repo[]>([]);
+    const [loading, setLoading] = useState(false);
     const { dispatch } = useContext(AppContext);
     const maxReposToShow = 3;
 
@@ -27,11 +28,13 @@ const UserRepos = (props: Props): JSX.Element => {
     }, []);
 
     const getRepos = async (): Promise<void> => {
+        setLoading(true);
         const data = await getUserRepos(props.reposUrl);
         if ('message' in data) {
             dispatch(showError(data.message));
         } else {
             setRepos(getBestUserRepos(data, maxReposToShow));
+            setLoading(false);
         }
     };
 
@@ -46,12 +49,13 @@ const UserRepos = (props: Props): JSX.Element => {
     };
 
     return (
-        <div className="user-info">
-            {!props.instant ? (
+        <div className="user-repos">
+            {!props.instant && !repos.length && !loading ? (
                 <button className="user-repos-btn" onClick={getRepos}>
                     Get user repos
                 </button>
             ) : null}
+            {loading ? <span className="placeholder-text fade" /> : null}
             <ul className="repo-list">
                 {repos.map(repo => (
                     <li key={repo.id} className="user-repo">

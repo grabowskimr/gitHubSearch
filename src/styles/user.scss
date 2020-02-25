@@ -50,7 +50,10 @@
         }
     }
 }
-.user-info {
+.user-repos {
+    margin-top: 0.5rem;
+    max-width: 100%;
+    word-break: break-word;
     .user-repos-btn {
         outline: none;
         background: $dark;
@@ -100,15 +103,15 @@
         width: 100%;
         padding: 1rem;
         box-sizing: border-box;
-        .placeholder-text {
-            background: $lightGrey;
-            border-radius: 25px;
-            height: 20px;
-            width: 100%;
-            display: block;
-            margin-bottom: 1rem;
-        }
     }
+}
+.placeholder-text {
+    background: $lightGrey;
+    border-radius: 25px;
+    height: 20px;
+    width: 100%;
+    display: block;
+    margin-bottom: 1rem;
 }
 .fade {
     opacity: 0.3;
